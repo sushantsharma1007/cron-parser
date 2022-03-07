@@ -1,5 +1,6 @@
 package com.deliveroo.exercise.types;
 
+// Enumerations for minimum and maximum range for each type of field coming
 public enum FieldType {
     MINUTES(0, 59),
     HOURS(0, 23),

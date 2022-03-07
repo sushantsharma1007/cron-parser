@@ -36,9 +36,9 @@ public class FieldTest {
 
     @Test
     public void testIncorrectRange() {
-        parse("0-5", FieldType.DAY_OF_MONTH, "outside valid range");
-        parse("0-5-6", FieldType.DAY_OF_MONTH, "Invalid number");
-        parse("1-32", FieldType.DAY_OF_MONTH, "outside valid range");
+        parse("0-5", FieldType.DAY_OF_MONTH, " invalid range");
+        parse("0-5-6", FieldType.DAY_OF_MONTH, "Invalid value");
+        parse("1-32", FieldType.DAY_OF_MONTH, " invalid range");
         parse("1-0", FieldType.DAY_OF_MONTH, "ends before it starts");
     }
 
@@ -71,8 +71,8 @@ public class FieldTest {
 
     @Test
     public void testIncorrectFixedValues() {
-        parse("0,5", FieldType.DAY_OF_MONTH, "outside valid range");
-        parse("1,32", FieldType.DAY_OF_MONTH, "outside valid range");
+        parse("0,5", FieldType.DAY_OF_MONTH, "invalid range");
+        parse("1,32", FieldType.DAY_OF_MONTH, "invalid range");
         }
 
     @Test
@@ -108,18 +108,18 @@ public class FieldTest {
     @Test
     public void testIncorrectIntervals()  {
         parse("*/0", FieldType.DAY_OF_MONTH, "interval is 0");
-        parse("*/10/10", FieldType.DAY_OF_MONTH, "has too many intervals");
-        parse("*/A", FieldType.DAY_OF_MONTH, "Invalid number 'A'");
-        parse("A/A", FieldType.DAY_OF_MONTH, "Invalid number 'A/A'");
-        parse("0/0", FieldType.DAY_OF_MONTH, "Invalid number '0/0'");
-        parse("0/15", FieldType.DAY_OF_MONTH, "Invalid number '0/15'");
+        parse("*/10/10", FieldType.DAY_OF_MONTH, "contains multiple intervals");
+        parse("*/A", FieldType.DAY_OF_MONTH, "Invalid value 'A'");
+        parse("A/A", FieldType.DAY_OF_MONTH, "Invalid value 'A/A'");
+        parse("0/0", FieldType.DAY_OF_MONTH, "Invalid value '0/0'");
+        parse("0/15", FieldType.DAY_OF_MONTH, "Invalid value '0/15'");
     }
  
 
     private void parse(String input, FieldType fieldType, String msg) {
         try {
             new Field(input, fieldType);
-            fail(input + " should not be a valid " + fieldType);
+            fail(input + " is invalid " + fieldType);
         } catch (InvalidFieldException e) {
             assertTrue(e.getMessage().contains(msg));
             assertTrue(e.getMessage().contains(fieldType.toString()));
