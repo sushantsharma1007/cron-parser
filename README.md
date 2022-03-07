@@ -10,7 +10,7 @@ Deliveroo coding exercise
      Clone the code and perform mvn clean install in root of the folder where pom.xml exists
      
   ## Run the code
-     Execute the below command
+     Execute the below command in generated target folder
      java -jar cron-parser-1.0-SNAPSHOT.jar "* 0 1-15 * 1,5 /usr/bin/find"
      
      Sample Output:
